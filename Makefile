@@ -3,10 +3,16 @@ CC= g++
 CFLAGS = -std=c++11
 
 all:
-	$(CC) $(CFLAGS) ./src/main.cpp -o UCR.exe
+	$(CC) $(CFLAGS) ./src/Driver.cpp -o UCR.exe
 
-main:
-	$(CC) $(CFLAGS) ./src/main.cpp
+Driver:
+	$(CC) $(CFLAGS) ./src/Driver.cpp
+
+Courses:
+	$(CC) $(CFLAGS) ./src/Courses.cpp
+
+SchoolSeason.cpp:
+	$(CC) $(CFLAGS) ./src/SchoolSeason.cpp
 
 clean:
 	rm -rf UCR.exe

@@ -4,6 +4,7 @@
 
 using namespace std;
 
+//Public Constructors
 Courses::Courses() {
     courseID = "N/A";
     courseName = "N/A";
@@ -30,7 +31,17 @@ Courses::Courses(string courseID, string courseName, unsigned units, string days
     this->time = time;
     this->location = location;
 }
+//End of Public Constructors
 
+//Private Overload Operators
+inline bool Courses::operator==(const Courses* rhs) {
+    if(this == rhs)
+        return true;
+    return false;
+}
+//End of Private Overload Operators
+
+//Public Member Functions
 void Courses::changeCourseID(string newCourseID) {
     courseID = newCourseID;
 }
@@ -61,3 +72,4 @@ void Courses::printCourses() {
     cout << courseName << endl;
     cout << courseID << '\t' << units << '\t' << days << '\t' << time << '\t' << location << endl;
 }
+//End of Public Member Functions

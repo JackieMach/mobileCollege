@@ -8,13 +8,13 @@ class SchoolSeason {
         string currentSeason;
         string dateOfOrigns;
         string dateOfTermination;
-        List< Courses* > courseCollection;
+        list< Courses* > courseCollection;
 
     public:
         SchoolSeason();
-        SchoolSeason(Season currentSeason);
-        SchoolSeason(Season currentSeason, string dateOfOrigns);
-        SchoolSeason(Season currentSeason, string dateOfOrigns, string dateOfTermination);
+        SchoolSeason(string currentSeason);
+        SchoolSeason(string currentSeason, string dateOfOrigns);
+        SchoolSeason(string currentSeason, string dateOfOrigns, string dateOfTermination);
 
         void setCurrentSeason(string newSeason);
         void setDateOfOrigns(string newDateOfOrigns);

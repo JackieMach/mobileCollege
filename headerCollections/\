@@ -10,7 +10,7 @@ class Courses {
         string time;
         string location;
 
-        inline bool operator==(const Courses* rhs);
+        bool operator==(const Courses* rhs);
     public:
         //Public Constructors
         Courses();
