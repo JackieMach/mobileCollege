@@ -3,6 +3,7 @@
 
 class Courses {
     private:
+        string courseID;
         string courseName;
         unsigned units;
         string days;
@@ -13,8 +14,9 @@ class Courses {
         //Public Constructors
         Courses();
         Courses(string courseName);
-        Courses(string courseName, unsigned units, string days, string time, string location);
+        Courses(string courseID, string courseName, unsigned units, string days, string time, string location);
 
+        void changeCourseID(string newCourseID);
         void changeCourseName(string newCourseName);
         void changeUnitsCtr(int newUnitCtr);
         void changeDays(string newDays);
