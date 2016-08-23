@@ -41,8 +41,13 @@ void test2() {
     cout << "False" << endl;
 }
 
+//Testing Parser
+void test3() {
+    :
+}
+
 int main(int argc, char**argv) {
-    test1();
+    //test1();
     //test2();
     return 0;
 }

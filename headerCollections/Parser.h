@@ -1,14 +1,15 @@
 #include <string>
 
-class UCR {
+#include "Course.h"
+#include "SchoolSeason.h"
+
+class Parser {
     private:
-        string QuarterName;
-        vector<Courses> listOfCourses;
+        SchoolSeason main;
 
     public:
-        UCR(vector<Courses> listOfCourses) {
-            this->listOfCourses = listOfCourses;
-        }
+        Parser();
+        Parser(SchoolSeason main);
 
-
+        void fillSchoolSeason(string fileName);
 }
