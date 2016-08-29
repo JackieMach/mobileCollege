@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <list>
+#include <sstream>
+#include <fstream>
 
 using namespace std;
 
@@ -11,25 +13,20 @@ using namespace std;
 //Public Constructors
 Parser::Parser()
 {}
-
-Parser::Parser(SchoolSeason main) {
-    this->main = main;
-}
+//End of Public Constructors
 
 void Parser::fillSchoolSeason(string fileName) {
     ifstream input;
     input.open(fileName.c_str());
     if(!input.is_open()) {
         cout << "ERROR --------- INVALID FILENAME. PLEASE CHECK INPUT" << endl;
-        return -1;
+        exit(1);
     }
 
-    string curr;
-    getline(input, curr);
-    cout << curr << endl;
-
-
-
+    string curr = "";
+    while(getline(input, curr, ' ')) {
+        cout << curr << endl;
+    }
 
     input.close();
 }

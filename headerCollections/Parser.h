@@ -1,7 +1,7 @@
 #include <string>
 
-#include "Course.h"
-#include "SchoolSeason.h"
+#include "Courses.h"
+#include "SchoolSeasons.h"
 
 class Parser {
     private:
@@ -9,7 +9,6 @@ class Parser {
 
     public:
         Parser();
-        Parser(SchoolSeason main);
 
         void fillSchoolSeason(string fileName);
-}
+};

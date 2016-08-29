@@ -4,6 +4,7 @@ using namespace std;
 
 #include "Courses.cpp"
 #include "SchoolSeason.cpp"
+#include "Parser.cpp"
 
 //Testing list proper
 void test1() {
@@ -43,11 +44,19 @@ void test2() {
 
 //Testing Parser
 void test3() {
-    :
+    cout << "Test3 ----- Parser" << endl;
+
+    Parser *s = new Parser();
+    s->fillSchoolSeason("webFormat.txt");
+
+
+
+    cout << "End of Test3" << endl;
 }
 
 int main(int argc, char**argv) {
     //test1();
     //test2();
+    test3();
     return 0;
 }
