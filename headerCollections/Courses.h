@@ -24,6 +24,13 @@ class Courses {
         void changeTimes(string newTimes);
         void changeLocations(string newLocations);
 
+        string getCourseID();
+        string getCourseName();
+        unsigned getUnitsCtr();
+        string getDays();
+        string getTimes();
+        string getLocations();
+
         void printCourses();
 };
 #endif

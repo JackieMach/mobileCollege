@@ -42,6 +42,7 @@ inline bool Courses::operator==(const Courses* rhs) {
 //End of Private Overload Operators
 
 //Public Member Functions
+//Start of setters
 void Courses::changeCourseID(string newCourseID) {
     courseID = newCourseID;
 }
@@ -65,7 +66,34 @@ void Courses::changeTimes(string newTimes) {
 void Courses::changeLocations(string newLocation) {
     location = newLocation;
 }
+//End of Setters
 
+
+//Start of Getters
+string Courses::getCourseID() {
+    return courseID;
+}
+
+string Courses::getCourseName() {
+    return courseName;
+}
+
+unsigned Courses::getUnitsCtr() {
+    return units;
+}
+
+string Courses::getDays() {
+    return days;
+}
+
+string Courses::getTimes() {
+    return time;
+}
+
+string Courses::getLocations() {
+    return location;
+}
+//End of Getters
 void Courses::printCourses() {
     //Course Name
     //Course ID     Units   Days    Times   Location
