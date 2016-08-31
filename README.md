@@ -1,7 +1,7 @@
 #Universal College Scheduler Prototype Code
 
-###Idea
-We want to help the user (target audience = college students) to quickly scan their schedule and have a calender visualization of their schedule. In addition, the user should have the ability to log in to their Google drive account and transfer their schedule to their Google Calender.
+####Abstraction 
+Imagine a scheduler that took care of organizing your college courses by providing a visual representation and automatically adds the events directly to your Google Calendar. By simplifying the process of setting up these events, the UC Mobile Scheduler will allow you to have an easier time conceptualizing your essential tasks, but also allowing you to add contingency time for “the unexpected”. Lastly, by having a well informed scheduler, the users can focus their energy on their college work and additional responsibilities. 
 
 ####Still in progress, screenshot and website will come soon. For now enjoy this dog
 ![Alt text](pug.jpg?raw=true "Pug")
