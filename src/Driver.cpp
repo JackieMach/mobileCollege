@@ -44,14 +44,14 @@ void test2() {
 
 //Testing Parser
 void test3() {
-    cout << "Test3 ----- Parser" << endl;
+    cout << "Test3 ----- Parser\n\n\n\n" << endl;
 
     Parser *s = new Parser();
     s->fillSchoolSeason("webFormat.txt");
 
 
 
-    cout << "End of Test3" << endl;
+    cout << "\n\n\n\nEnd of Test3" << endl;
 }
 
 int main(int argc, char**argv) {

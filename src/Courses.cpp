@@ -8,7 +8,7 @@ using namespace std;
 Courses::Courses() {
     courseID = "N/A";
     courseName = "N/A";
-    units = 0;
+    units = 0.00;
     days = "N/A";
     time = "N/A";
     location = "N/A";
@@ -17,13 +17,13 @@ Courses::Courses() {
 Courses::Courses(string courseName) {
     courseID = "N/A";
     this->courseName = courseName;
-    units = 0;
+    units = 0.00;
     days = "N/A";
     time = "N/A";
     location = "N/A";
 }
 
-Courses::Courses(string courseID, string courseName, unsigned units, string days, string time, string location) {
+Courses::Courses(string courseID, string courseName, double units, string days, string time, string location) {
     this->courseID = courseID;
     this->courseName = courseName;
     this->units = units;
@@ -51,7 +51,7 @@ void Courses::changeCourseName(string newCourseName) {
     courseName = newCourseName;
 }
 
-void Courses::changeUnitsCtr(int newUnitCtr) {
+void Courses::changeUnitsCtr(double newUnitCtr) {
     units = newUnitCtr;
 }
 
@@ -78,7 +78,7 @@ string Courses::getCourseName() {
     return courseName;
 }
 
-unsigned Courses::getUnitsCtr() {
+double Courses::getUnitsCtr() {
     return units;
 }
 
@@ -99,5 +99,6 @@ void Courses::printCourses() {
     //Course ID     Units   Days    Times   Location
     cout << courseName << endl;
     cout << courseID << '\t' << units << '\t' << days << '\t' << time << '\t' << location << endl;
+    cout << endl;
 }
 //End of Public Member Functions

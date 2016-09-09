@@ -16,3 +16,4 @@ SchoolSeason.cpp:
 
 clean:
 	rm -rf UCR.exe
+	rm -rf ./src/a.out

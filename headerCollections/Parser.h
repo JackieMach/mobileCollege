@@ -7,9 +7,6 @@ class Parser {
     private:
         SchoolSeason main;
 
-        void grabClassName(ifstream &, SchoolSeason *);
-        void grabClassData(ifstream &, Courses *);
-
     public:
         Parser();
 

@@ -1,8 +1,9 @@
 #include <iostream>
 #include <fstream>
-#include <stdio.h>
-#include <string.h>
-#include <cstring>
+#include <sstream>
+#include <vector>
+#include <algorithm>
+#include <assert.h>
 
 using namespace std;
 
@@ -15,66 +16,7 @@ Parser::Parser()
 {}
 //End of Public Constructors
 
-void Parser::grabClassName(ifstream &input, SchoolSeason *season) {
-    string curr = "";
-    unsigned i=0;
-    getline(input, curr, '\n');
-
-    while(getline(input, curr, '\n')) {
-        Courses *newCourse = new Courses(curr);
-        cout << curr << " = ";
-
-        getline(input, curr, '\n');
-        char *cstr;
-        strcpy(cstr, curr.c_str());
-        char *p;
-        p = strtok(cstr, " \t\n");
-
-        string tempWord = "";
-        while(p != NULL) {
-            p = strtok(cstr, " \t\n");
-            tempWord += p;
-        }
-        cout << tempWord << endl;
-
-        cout << "Done" << endl;
-        break;
-    }
-}
-
-void Parser::grabClassData(ifstream &input, Courses *newCourse) {
-    string curr = "";
-    getline(input, curr, '\n');
-
-    char *cstr;
-    strcpy(cstr, curr.c_str());
-    char *p;
-    p = strtok(cstr, " \t\n");
-
-    string tempWord = "";
-    for(p; p!=NULL; p = strtok(NULL, " \t\n")) {
-        //char *checkDot = strchr(p, '.');
-
-
-        tempWord += p;
-    }
-
-    /*
-    string tempWord = "";
-    while(p != 0) {
-        string pstr = string(p);
-        size_t pStrPos = pstr.find('.');
-        if(pStrPos != std::string::npos) {
-            cout << "Here" << endl;
-        }
-
-        tempWord += p;
-        cout << tempWord << endl;
-        p = strtok(NULL, "\t");
-    }
-    */
-}
-
+//Start of Public Functions
 void Parser::fillSchoolSeason(string fileName) {
     ifstream input;
     input.open(fileName.c_str());
@@ -83,31 +25,70 @@ void Parser::fillSchoolSeason(string fileName) {
         exit(1);
     }
 
-    SchoolSeason *season = new SchoolSeason();
+    string temp = "";
+    getline(input, temp);
+    string seasonName = temp.substr(23, temp.size()-1);
 
-    string curr = "";
-    for(unsigned i=0; i<4; i++) {
-        getline(input, curr, ' ');
+    SchoolSeason *currSeason = new SchoolSeason(seasonName);
+
+    for(unsigned i=0; i<2; i++) {
+        getline(input, temp);
     }
 
-    string currentSeason = "";
-    getline(input, curr, ' ');
-    currentSeason += curr + " ";
-    getline(input, curr, ' ');
-    currentSeason += curr + " ";
-    currentSeason += "Quarter";
+    while(getline(input, temp)) {
+        string courseName = temp;
+        //cout << "Title: " << courseName << endl;
 
-    //cout << currentSeason << endl;
-    season->setCurrentSeason(currentSeason);
+        getline(input, temp);
+        string courseData = temp;
+        //cout << "Data: " << courseData << endl;
+        if(courseData.find("Total") != std::string::npos) {
+            break;
+        }
 
-    getline(input, curr, ' ');
-    getline(input, curr, ' ');
-    while(input.good()) {
-        grabClassName(input, season);
-        break;
+        courseData.erase(remove(courseData.begin(), courseData.end(), ' '), courseData.end());
+
+        vector<string> dataVector;
+        istringstream iss(courseData);
+        string curr;
+        while(iss >> curr)
+            dataVector.push_back(curr);
+
+        assert(dataVector.size() >= 6);
+
+        /*
+        for(string s : dataVector) {
+            cout << s << endl;
+        }
+        cout << endl;
+        */
+
+        string courseID = dataVector.at(0);
+        double units;
+        string days;
+        string time;
+        string location;
+
+        if(dataVector.at(1) == "NG") {
+            units = atof(dataVector.at(2).c_str());
+            days = dataVector.at(3);
+            time = dataVector.at(4);
+            location = dataVector.at(5) + " " + dataVector.at(6);
+        }
+        else {
+            units = atof(dataVector.at(1).c_str());
+            days = dataVector.at(2);
+            time = dataVector.at(3);
+            location = dataVector.at(4) + " " + dataVector.at(5);
+        }
+
+        Courses *star = new Courses(courseID, courseName, units, days, time, location);
+        currSeason->addCourses(star);
+
+        getline(input, temp);
     }
+    currSeason->print();
 
     input.close();
 }
-
-//End of Public Constructors
+//End of Public Functions
