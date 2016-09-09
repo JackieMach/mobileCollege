@@ -1,11 +1,9 @@
 #include <iostream>
-#include <string>
-#include <list>
-#include <sstream>
 #include <fstream>
 #include <stdio.h>
 #include <string.h>
-#include <assert.h>
+#include <cstring>
+
 using namespace std;
 
 #include "../headerCollections/SchoolSeasons.h"
@@ -24,7 +22,22 @@ void Parser::grabClassName(ifstream &input, SchoolSeason *season) {
 
     while(getline(input, curr, '\n')) {
         Courses *newCourse = new Courses(curr);
-        grabClassData(input, newCourse);
+        cout << curr << " = ";
+
+        getline(input, curr, '\n');
+        char *cstr;
+        strcpy(cstr, curr.c_str());
+        char *p;
+        p = strtok(cstr, " \t\n");
+
+        string tempWord = "";
+        while(p != NULL) {
+            p = strtok(cstr, " \t\n");
+            tempWord += p;
+        }
+        cout << tempWord << endl;
+
+        cout << "Done" << endl;
         break;
     }
 }
@@ -36,17 +49,30 @@ void Parser::grabClassData(ifstream &input, Courses *newCourse) {
     char *cstr;
     strcpy(cstr, curr.c_str());
     char *p;
-    p = strtok(cstr, " \t");
+    p = strtok(cstr, " \t\n");
 
     string tempWord = "";
+    for(p; p!=NULL; p = strtok(NULL, " \t\n")) {
+        //char *checkDot = strchr(p, '.');
+
+
+        tempWord += p;
+    }
+
+    /*
+    string tempWord = "";
     while(p != 0) {
-        assert(p != "");
-        char *pchr = strchr(p, '.');
+        string pstr = string(p);
+        size_t pStrPos = pstr.find('.');
+        if(pStrPos != std::string::npos) {
+            cout << "Here" << endl;
+        }
 
         tempWord += p;
         cout << tempWord << endl;
         p = strtok(NULL, "\t");
     }
+    */
 }
 
 void Parser::fillSchoolSeason(string fileName) {
